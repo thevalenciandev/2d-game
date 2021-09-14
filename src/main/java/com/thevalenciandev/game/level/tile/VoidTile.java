@@ -11,7 +11,7 @@ public class VoidTile extends Tile {
 
     @Override
     public void render(int x, int y, Screen screen) {
-        // x and y in pixels. we need to line them up to what the screen expects
+        // x and y in tile precision: we need to line them up to what the screen expects
         screen.renderTile(x << 4, y << 4, this);
     }
 }

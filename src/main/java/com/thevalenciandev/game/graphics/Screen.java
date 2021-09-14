@@ -58,12 +58,13 @@ public class Screen {
         xp -= xOffset;
         yp -= yOffset;
         for (int y = 0; y < tile.sprite.size; y++) {
-            int yabs = y + yp;
+            int ya = y + yp;
             for (int x = 0; x < tile.sprite.size; x++) {
-                int xabs = x + xp;
-                if (xabs < 0 || xabs >= width || yabs < 0 || yabs >= width)
+                int xa = x + xp;
+                if (xa < -tile.sprite.size || xa >= width || ya < 0 || ya >= height)
                     break; // only render the tiles that we see on the screen (don't consume extra resources for nothin')
-                pixels[xabs + yabs * width] = tile.sprite.pixels[x + y * tile.sprite.size];
+                if (xa < 0) xa = 0;
+                pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.size];
             }
         }
     }

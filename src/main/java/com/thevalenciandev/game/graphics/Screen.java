@@ -17,42 +17,15 @@ public class Screen {
 
     private int xOffset, yOffset;
 
-    public Screen(int width, int height) {
+    public Screen(int width, int height, int[] pixels) {
         this.width = width;
         this.height = height;
-        this.pixels = new int[width * height];
-
-        Random random = new Random();
-        for (int i = 0; i < tiles.length; i++) {
-            // Pick any color from 0 (black) to white (0xFFFFFF)
-            tiles[i] = random.nextInt(0xFFFFFF);
-            tiles[0] = 0;
-        }
+        this.pixels = pixels;
     }
 
     public void clear() {
         Arrays.fill(pixels, 0);
     }
-
-    public void copyPixelsOnto(int[] buffer) {
-        for (int i = 0; i < buffer.length; i++) {
-            buffer[i] = pixels[i];
-        }
-    }
-//    public void render(int xOffset, int yOffset) {
-//        for (int y = 0; y < height; y++) {
-//            int yp = y + yOffset;
-//            if (yp < 0 || yp >= height) continue;
-//            for (int x = 0; x < width; x++) {
-//                int xp = x + xOffset;
-//                if (xp < 0 || xp >= width) continue;
-//                // Below we do the equivalent of (x / TILE_SIZE) + (y / TILE_SIZE) * MAP_SIZE;
-//                // basically the same as x + y * width but scaled to the tile size
-//                // now render the pixel
-//                pixels[xp + yp * width] = Sprite.GRASS.pixels[(x & 15) + (y & 15) * Sprite.GRASS.size];
-//            }
-//        }
-//    }
 
     public void renderTile(int xp, int yp, Tile tile) {
         xp -= xOffset;

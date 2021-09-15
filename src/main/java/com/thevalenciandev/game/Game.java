@@ -1,5 +1,6 @@
 package com.thevalenciandev.game;
 
+import com.thevalenciandev.game.entity.mob.Player;
 import com.thevalenciandev.game.graphics.Screen;
 import com.thevalenciandev.game.input.Keyboard;
 import com.thevalenciandev.game.level.Level;
@@ -24,12 +25,13 @@ public class Game extends Canvas implements Runnable, TimerListener {
     // RGB type means our image will NOT have alpha
     private final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     // Raster is like a data structure that represents a rectangular array of pixels
-    // Basically our image is an array of pixels
+    // Basically our image is an array of pixels. We can safely cast to DataBufferInt because the type is TYPE_INT_RGB
     private final int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-    private final Screen screen = new Screen(WIDTH, HEIGHT);
+    private final Screen screen = new Screen(WIDTH, HEIGHT, pixels);
     private final Keyboard keyboard = new Keyboard();
     private final com.thevalenciandev.game.timer.Timer timer;
     private final Level level = new RandomLevel(64, 64);
+    private final Player player = new Player(keyboard);
 
     private Thread thread;
 
@@ -69,15 +71,10 @@ public class Game extends Canvas implements Runnable, TimerListener {
         timer.start();
     }
 
-    int x = 0, y = 0;
-
     @Override
     public void onUpdate() {
         keyboard.update();
-        if (keyboard.up) y--;
-        if (keyboard.down) y++;
-        if (keyboard.left) x--;
-        if (keyboard.right) x++;
+        player.update();
     }
 
     @Override
@@ -101,14 +98,13 @@ public class Game extends Canvas implements Runnable, TimerListener {
         }
 
         screen.clear();
-//        screen.render(x, y);
-        level.render(x, y, screen);
-        screen.copyPixelsOnto(pixels);
+        level.render(player.x, player.y, screen);
 
         Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+//        g.setColor(Color.WHITE);
+//        g.setFont(new Font("Verdana", 0, 50));
+//        g.drawString("X: " + player.x + " Y: " + player.y, 350, 300);
         g.dispose();
         bs.show(); // swap buffers (make the next available (computed) buffer visible
     }

@@ -18,7 +18,10 @@ public class Sprite {
     public static final Sprite VOID_BLUE = new Sprite(16, 0x1B87E0);
 
     // Each player image is of size 32 x 32
-    public static final Sprite PLAYER_DOWN = new Sprite(32, 0, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_DOWN =  new Sprite(32, 0, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_LEFT =  new Sprite(32, 0, 1, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_RIGHT = new Sprite(32, 0, 2, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_UP =    new Sprite(32, 0, 3, SpriteSheet.PLAYER);
 
     /**
      * @param size

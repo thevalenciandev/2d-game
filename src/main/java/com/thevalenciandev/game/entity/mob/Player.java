@@ -9,13 +9,12 @@ public class Player extends Mob {
     private final Keyboard keyboard;
 
     public Player(int x, int y, Keyboard keyboard) {
-        super(x, y);
+        super(x, y, Sprite.PLAYER_DOWN);
         this.keyboard = keyboard;
     }
 
     public Player(Keyboard keyboard) {
-        super(0, 0);
-        this.keyboard = keyboard;
+        this(0, 0, keyboard);
     }
 
     @Override
@@ -33,6 +32,13 @@ public class Player extends Mob {
     @Override
     public void render(Screen screen) {
         // Make sure the player is centered, by moving it just half a tile (32/2)
-        screen.renderPlayer(this.x - 16, this.y - 16, Sprite.PLAYER_DOWN);
+        this.sprite = switch (dir) {
+            case SOUTH -> Sprite.PLAYER_DOWN;
+            case NORTH -> Sprite.PLAYER_UP;
+            case EAST -> Sprite.PLAYER_RIGHT;
+            case WEST -> Sprite.PLAYER_LEFT;
+        };
+
+        screen.renderPlayer(this.x - 16, this.y - 16, this.sprite);
     }
 }

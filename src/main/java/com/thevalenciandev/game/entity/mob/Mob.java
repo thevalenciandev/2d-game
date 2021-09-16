@@ -8,19 +8,23 @@ import com.thevalenciandev.game.graphics.Sprite;
  */
 public abstract class Mob extends Entity {
 
+    enum Direction {
+        NORTH, EAST, SOUTH, WEST
+    }
     protected Sprite sprite;
-    protected int dir = 0; // 0 - north, 1 - east, 2 - south, 3 - west
+    protected Direction dir = Direction.SOUTH;
     protected boolean moving = false;
 
-    public Mob(int x, int y) {
+    public Mob(int x, int y, Sprite sprite) {
         super(x, y);
+        this.sprite = sprite;
     }
 
     public void move(int xa, int ya) {
-        if (xa > 0) dir = 1;
-        if (xa < 0) dir = 3;
-        if (ya > 0) dir = 2;
-        if (ya < 0) dir = 0;
+        if (xa > 0) dir = Direction.EAST;
+        if (xa < 0) dir = Direction.WEST;
+        if (ya > 0) dir = Direction.SOUTH;
+        if (ya < 0) dir = Direction.NORTH;
 
         if (collision()) return;
 

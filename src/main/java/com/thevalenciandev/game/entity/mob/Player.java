@@ -1,6 +1,7 @@
 package com.thevalenciandev.game.entity.mob;
 
 import com.thevalenciandev.game.graphics.Screen;
+import com.thevalenciandev.game.graphics.Sprite;
 import com.thevalenciandev.game.input.Keyboard;
 
 public class Player extends Mob {
@@ -31,6 +32,12 @@ public class Player extends Mob {
 
     @Override
     public void render(Screen screen) {
-        super.render(screen);
+        // Make sure the player is centered, by moving it just one tile (as we're rendering 4 separate chunks)
+        int xx = this.x - 16;
+        int yy = this.y - 16;
+        screen.renderPlayer(xx, yy, Sprite.PLAYER_0);
+        screen.renderPlayer(xx + 16, yy, Sprite.PLAYER_1);
+        screen.renderPlayer(xx, yy + 16, Sprite.PLAYER_2);
+        screen.renderPlayer(xx + 16, yy + 16, Sprite.PLAYER_3);
     }
 }

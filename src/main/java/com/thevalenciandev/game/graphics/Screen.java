@@ -3,7 +3,6 @@ package com.thevalenciandev.game.graphics;
 import com.thevalenciandev.game.level.tile.Tile;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Screen {
 
@@ -38,6 +37,24 @@ public class Screen {
                     break; // only render the tiles that we see on the screen (don't consume extra resources for nothin')
                 if (xa < 0) xa = 0;
                 pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.size];
+            }
+        }
+    }
+
+    public void renderPlayer(int xp, int yp, Sprite sprite) {
+        xp -= xOffset;
+        yp -= yOffset;
+        int playerChunkSize = 16; // player in 4 chunks of 16 by 16 pixels
+        for (int y = 0; y < playerChunkSize; y++) {
+            int ya = y + yp;
+            for (int x = 0; x < playerChunkSize; x++) {
+                int xa = x + xp;
+                if (xa < -playerChunkSize || xa >= width || ya < 0 || ya >= height)
+                    break; // only render the tiles that we see on the screen (don't consume extra resources for nothin')
+                if (xa < 0) xa = 0;
+                int color = sprite.pixels[x + y * playerChunkSize];
+                if (color != 0xFFFF00FF) // 0xFFFF00FF is the background pink, but we add FF at the front because we're using an alpha channel too
+                    pixels[xa + ya * width] = color;
             }
         }
     }

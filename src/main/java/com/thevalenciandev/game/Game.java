@@ -98,7 +98,11 @@ public class Game extends Canvas implements Runnable, TimerListener {
         }
 
         screen.clear();
-        level.render(player.x, player.y, screen);
+        // put the player in the middle of the screen, by changing the position of the map (ie. not the player!)
+        int xScroll = player.x - screen.width / 2;
+        int yScroll = player.y - screen.height / 2;
+        level.render(xScroll, yScroll, screen);
+        player.render(screen);
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);

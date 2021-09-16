@@ -17,6 +17,18 @@ public class Sprite {
     public static final Sprite GRASS = new Sprite(16, 0, 0, SpriteSheet.TILES);
     public static final Sprite VOID_BLUE = new Sprite(16, 0x1B87E0);
 
+    // Player composed of 4 tiles, so below are the four corners
+    public static final Sprite PLAYER_0 = new Sprite(16, 0, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_1 = new Sprite(16, 1, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_2 = new Sprite(16, 0, 1, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_3 = new Sprite(16, 1, 1, SpriteSheet.PLAYER);
+
+    /**
+     * @param size
+     * @param x starting point on the x axis (in tile precision)
+     * @param y starting point on the y axis (in tile precision)
+     * @param spriteSheet the sheet to get the Sprite from
+     */
     public Sprite(int size, int x, int y, SpriteSheet spriteSheet) {
         this.size = size;
         this.x = x * size;

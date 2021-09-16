@@ -12,6 +12,7 @@ public class SpriteSheet {
     public final int[] pixels;
 
     public static SpriteSheet TILES = new SpriteSheet("/textures/SpriteSheet.png", 256);
+    public static SpriteSheet PLAYER = new SpriteSheet("/textures/PlayerSpriteSheet.png", 128);
 
     public SpriteSheet(String path, int size) {
         this.path = path;

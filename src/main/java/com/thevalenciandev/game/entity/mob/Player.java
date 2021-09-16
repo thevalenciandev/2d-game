@@ -32,12 +32,7 @@ public class Player extends Mob {
 
     @Override
     public void render(Screen screen) {
-        // Make sure the player is centered, by moving it just one tile (as we're rendering 4 separate chunks)
-        int xx = this.x - 16;
-        int yy = this.y - 16;
-        screen.renderPlayer(xx, yy, Sprite.PLAYER_0);
-        screen.renderPlayer(xx + 16, yy, Sprite.PLAYER_1);
-        screen.renderPlayer(xx, yy + 16, Sprite.PLAYER_2);
-        screen.renderPlayer(xx + 16, yy + 16, Sprite.PLAYER_3);
+        // Make sure the player is centered, by moving it just half a tile (32/2)
+        screen.renderPlayer(this.x - 16, this.y - 16, Sprite.PLAYER_DOWN);
     }
 }

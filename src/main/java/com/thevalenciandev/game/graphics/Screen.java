@@ -44,15 +44,15 @@ public class Screen {
     public void renderPlayer(int xp, int yp, Sprite sprite) {
         xp -= xOffset;
         yp -= yOffset;
-        int playerChunkSize = 16; // player in 4 chunks of 16 by 16 pixels
-        for (int y = 0; y < playerChunkSize; y++) {
+        int playerSize = 32;
+        for (int y = 0; y < playerSize; y++) {
             int ya = y + yp;
-            for (int x = 0; x < playerChunkSize; x++) {
+            for (int x = 0; x < playerSize; x++) {
                 int xa = x + xp;
-                if (xa < -playerChunkSize || xa >= width || ya < 0 || ya >= height)
+                if (xa < -playerSize || xa >= width || ya < 0 || ya >= height)
                     break; // only render the tiles that we see on the screen (don't consume extra resources for nothin')
                 if (xa < 0) xa = 0;
-                int color = sprite.pixels[x + y * playerChunkSize];
+                int color = sprite.pixels[x + y * playerSize];
                 if (color != 0xFFFF00FF) // 0xFFFF00FF is the background pink, but we add FF at the front because we're using an alpha channel too
                     pixels[xa + ya * width] = color;
             }

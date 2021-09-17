@@ -1,5 +1,6 @@
 package com.thevalenciandev.game.graphics;
 
+import com.thevalenciandev.game.entity.mob.Player;
 import com.thevalenciandev.game.level.tile.Tile;
 
 import java.util.Arrays;
@@ -41,18 +42,26 @@ public class Screen {
         }
     }
 
-    public void renderPlayer(int xp, int yp, Sprite sprite) {
+    public void renderPlayer(int xp, int yp, Sprite sprite, Player.FlipInstruction flip) {
         xp -= xOffset;
         yp -= yOffset;
         int playerSize = 32;
         for (int y = 0; y < playerSize; y++) {
             int ya = y + yp;
+            int ys = y;
+            if (flip == Player.FlipInstruction.FLIP_Y || flip == Player.FlipInstruction.FLIP_XY) {
+                ys = playerSize - 1 - y; // this renders the image in reverse (starting from the bottom)
+            }
             for (int x = 0; x < playerSize; x++) {
                 int xa = x + xp;
+                int xs = x;
+                if (flip == Player.FlipInstruction.FLIP_X || flip == Player.FlipInstruction.FLIP_XY) {
+                    xs = playerSize - 1 - x; // this renders the image in reverse (starting from the right)
+                }
                 if (xa < -playerSize || xa >= width || ya < 0 || ya >= height)
                     break; // only render the tiles that we see on the screen (don't consume extra resources for nothin')
                 if (xa < 0) xa = 0;
-                int color = sprite.pixels[x + y * playerSize];
+                int color = sprite.pixels[xs + ys * playerSize];
                 if (color != 0xFFFF00FF) // 0xFFFF00FF is the background pink, but we add FF at the front because we're using an alpha channel too
                     pixels[xa + ya * width] = color;
             }

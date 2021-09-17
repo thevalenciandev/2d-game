@@ -18,10 +18,21 @@ public class Sprite {
     public static final Sprite VOID_BLUE = new Sprite(16, 0x1B87E0);
 
     // Each player image is of size 32 x 32
-    public static final Sprite PLAYER_DOWN =  new Sprite(32, 0, 0, SpriteSheet.PLAYER);
-    public static final Sprite PLAYER_LEFT =  new Sprite(32, 0, 1, SpriteSheet.PLAYER);
-    public static final Sprite PLAYER_RIGHT = new Sprite(32, 0, 2, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_DOWN =   new Sprite(32, 0, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_DOWN_1 = new Sprite(32, 1, 0, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_DOWN_2 = new Sprite(32, 3, 0, SpriteSheet.PLAYER);
+
+    public static final Sprite PLAYER_LEFT =   new Sprite(32, 0, 1, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_LEFT_1 = new Sprite(32, 1, 1, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_LEFT_2 = new Sprite(32, 3, 1, SpriteSheet.PLAYER);
+
+    public static final Sprite PLAYER_RIGHT =   new Sprite(32, 0, 2, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_RIGHT_1 = new Sprite(32, 1, 2, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_RIGHT_2 = new Sprite(32, 3, 2, SpriteSheet.PLAYER);
+
     public static final Sprite PLAYER_UP =    new Sprite(32, 0, 3, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_UP_1 =  new Sprite(32, 1, 3, SpriteSheet.PLAYER);
+    public static final Sprite PLAYER_UP_2 =  new Sprite(32, 3, 3, SpriteSheet.PLAYER);
 
     /**
      * @param size

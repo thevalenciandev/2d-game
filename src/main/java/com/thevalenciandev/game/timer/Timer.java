@@ -24,7 +24,7 @@ public class Timer {
             delta += (now - lastTime) / NS;
             lastTime = now;
             while (delta >= 1) {
-                timerListener.onUpdate();
+                timerListener.onUpdate(); // 60 times a second
                 updates++;
                 delta--;
             }

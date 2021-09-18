@@ -13,7 +13,6 @@ public class Screen {
     public final int width;
     public final int height;
     private final int[] pixels; // use a 1 dimensional array
-    private final int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 
     private int xOffset, yOffset;
 

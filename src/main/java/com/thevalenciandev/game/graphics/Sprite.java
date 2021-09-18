@@ -14,8 +14,11 @@ public class Sprite {
 
     public final int[] pixels;
 
-    public static final Sprite GRASS = new Sprite(16, 0, 0, SpriteSheet.TILES);
+    public static final Sprite GRASS  = new Sprite(16, 0, 0, SpriteSheet.TILES);
+    public static final Sprite LAVA   = new Sprite(16, 1, 0, SpriteSheet.TILES);
+    public static final Sprite GROUND = new Sprite(16, 2, 0, SpriteSheet.TILES);
     public static final Sprite VOID_BLUE = new Sprite(16, 0x1B87E0);
+    public static final Sprite VOID_LAVA = new Sprite(16, 0x7F0000);
 
     // Each player image is of size 32 x 32
     public static final Sprite PLAYER_DOWN =   new Sprite(32, 0, 0, SpriteSheet.PLAYER);

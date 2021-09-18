@@ -67,7 +67,8 @@ public class Level {
         if (x < 0 || y < 0 || x >= width || y >= height)
             return Tile.VOID_TILE; // if out of the map, just render a void tile
 
-        if (tiles[x + y * width] == 0) return Tile.GRASS;
+        if (tiles[x + y * width] == 0) return Tile.GROUND_TILE;
+        if (tiles[x + y * width] == 1) return Tile.LAVA_TILE;
         return Tile.VOID_TILE;
     }
 

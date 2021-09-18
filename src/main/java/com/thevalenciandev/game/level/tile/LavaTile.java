@@ -2,9 +2,9 @@ package com.thevalenciandev.game.level.tile;
 
 import com.thevalenciandev.game.graphics.Sprite;
 
-public class VoidTile extends Tile {
+public class LavaTile extends Tile {
 
-    public VoidTile(Sprite sprite) {
+    public LavaTile(Sprite sprite) {
         super(sprite);
     }
 

@@ -4,7 +4,7 @@ import com.thevalenciandev.game.entity.mob.Player;
 import com.thevalenciandev.game.graphics.Screen;
 import com.thevalenciandev.game.input.Keyboard;
 import com.thevalenciandev.game.level.Level;
-import com.thevalenciandev.game.level.RandomLevel;
+import com.thevalenciandev.game.level.SpawnLevel;
 import com.thevalenciandev.game.timer.TimerListener;
 
 import javax.swing.*;
@@ -30,7 +30,7 @@ public class Game extends Canvas implements Runnable, TimerListener {
     private final Screen screen = new Screen(WIDTH, HEIGHT, pixels);
     private final Keyboard keyboard = new Keyboard();
     private final com.thevalenciandev.game.timer.Timer timer;
-    private final Level level = new RandomLevel(64, 64);
+    private final Level level = new SpawnLevel("/textures/level.png");
     private final Player player = new Player(keyboard);
 
     private Thread thread;

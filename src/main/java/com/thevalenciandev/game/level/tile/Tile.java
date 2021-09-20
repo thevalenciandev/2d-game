@@ -9,13 +9,13 @@ import com.thevalenciandev.game.graphics.Sprite;
  */
 public class Tile {
 
-    public final Sprite sprite;
-    public int x, y;
-
     public static final Tile GRASS = new GrassTile(Sprite.GRASS);
     public static final Tile LAVA_TILE = new LavaTile(Sprite.LAVA);
     public static final Tile GROUND_TILE = new GroundTile(Sprite.GROUND);
     public static final Tile VOID_TILE = new VoidTile(Sprite.VOID_LAVA);
+
+    public final Sprite sprite;
+    public int x, y;
 
     public Tile(Sprite sprite) {
         this.sprite = sprite;
